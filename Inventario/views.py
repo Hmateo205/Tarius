@@ -5,3 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 def Home (request):
     return render (request, 'Home.html')
+
+def SingUp (request):
+    return render (request, 'SingUp.html')
