@@ -1,9 +1,5 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.http import HttpResponse
-
-
 
 # Create your views here.
 
@@ -11,6 +7,5 @@ def Home (request):
     return render (request, 'Home.html')
 
 def SingUp (request):
-    return render(request, 'SingUp.htm', {
-            'form' : UserCreationForm
-        })
+    return render (request, 'SingUp.html')
+    
