@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Inventario.views import Hello
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path ('', Inventario.views.hello),
 ]
