@@ -28,7 +28,13 @@ def SingUp (request):
                 return HttpResponse('Usuario Creado')
             
             except:
-                return HttpResponse('El ususario ya existe')
+                return render(request, 'SingUp.html',{
+                'form' : UserCreationForm,
+                "error": 'El Suario ya existe'
+                })
 
 
-        return HttpResponse('Las Contrasenas no coinciden')
+        return render(request, 'SingUp.html',{
+                'form' : UserCreationForm,
+                "error": 'Las constrasenas no coinciden'
+                })
