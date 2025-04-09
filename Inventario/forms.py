@@ -3,7 +3,7 @@ from Inventario.models import Stock
 
 
 
-class StokcForm(ModelForm):
+class StockForm(ModelForm):
     class Meta:
         model= Stock
-        fields = ['Titulo', 'Descripcion', 'Comprar']
+        fields = ['Titulo', 'Descripcion', 'Cantidad', 'Comprar']

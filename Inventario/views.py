@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db  import IntegrityError
 from django.http import HttpResponse
-from Inventario.forms import StokcForm
+from Inventario.forms import StockForm
 
 # Create your views here.
 
@@ -49,14 +49,22 @@ def Crear(request):
     
     if request.method == 'GET':
         return render(request, 'Crear.html',{
-        'form' : StokcForm
+        'form' : StockForm
         })
     
     else:
-        print(request.POST)
-        return render(request, 'Crear.html',{
-        'form' : StokcForm
-        })
+        try:
+            form = StockForm(request.POST)
+            nuevo_stock = form.save(commit=False)
+            nuevo_stock.user = request.user
+            nuevo_stock.save()
+            return redirect('Stock')
+        
+        except ValueError:
+            return render(request, 'Crear.html',{
+            'form' : StockForm,
+            'error': 'Ingrese datos validos'
+            })
     
     
 
