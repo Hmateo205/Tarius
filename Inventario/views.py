@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.db  import IntegrityError
 from django.http import HttpResponse
 
@@ -41,10 +41,36 @@ def SingUp (request):
                 "error": 'Las constrasenas no coinciden'
                 })
     
-def Stock(reqest):
-    return render (reqest, 'Stock.html')
+def Stock(request):
+    return render (request, 'Stock.html')
 
-def LogOut(reqest):
-    logout(reqest)
+def LogOut(request):
+    logout(request)
     return redirect('Home')
+
+def LogIn(request):
+    
+    if request.method == 'GET':
+        return render(request, 'LogIn.html',{
+            'form': AuthenticationForm
+        })
+    
+    
+    else:
+        
+        user = authenticate(request, username = request.POST['username'], 
+                     password = request.POST['password']  )
+        
+        if user is None:
+            return render(request, 'LogIn.html',{
+            'form': AuthenticationForm,
+            'error': 'La contrasela es incorrecta'
+            })
+        else:
+            login(request, user)
+            return redirect('Stock')
+            
+
+        
+    
     
