@@ -15,5 +15,11 @@
 </form>
 
 
+<form action="{% url 'Stock_delete' stoc.id %}" method="POST">
+    {% csrf_token %}
+    <button>
+        Eliminar
+    </button>
+</form>
 
 {% endblock %}

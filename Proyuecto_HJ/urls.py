@@ -27,6 +27,8 @@ urlpatterns = [
     path('LogIn/',views.LogIn, name= 'LogIn'),
     path('Stock/Crear/',views.Crear, name= 'Crear'),
     path('Stock/<int:Stock_id>/',views.Stock_detail, name= 'Stock_detail'),
+    path('Stock/<int:Stock_id>/Eliminar',views.Stock_delete, name= 'Stock_delete'),
+
 
 
 

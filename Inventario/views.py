@@ -61,6 +61,12 @@ def Stock_detail(request, Stock_id):
         form = StockForm(request.POST, instance= Stock)
         form.save()
         return redirect('Stock')
+    
+def Stock_delete(request, Stock_id):
+    Stock = get_object_or_404(Stock_1, pk=Stock_id, user=request.user)
+    if request.method == 'POST':
+        Stock.delete()
+        return redirect('Stock')
 
 
 def Crear(request):
@@ -84,7 +90,7 @@ def Crear(request):
             'error': 'Ingrese datos validos'
             })
     
-    
+
 
 
 
