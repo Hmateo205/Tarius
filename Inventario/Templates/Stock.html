@@ -7,11 +7,14 @@
 <ul>
     {% for item in stoc %}
         <li>
-            <strong>{{ item.Titulo }}</strong> - {{ item.Descripcion }}<br>
-            Cantidad: {{ item.Cantidad }}<br>
-            Fecha de creación: {{ item.Fecha_Creacion }}<br>
-            ¿Comprar?: {{ item.Comprar|yesno:"Sí,No" }}<br>
-            Creado por: {{ item.user.username }}
+            <a href="{% url 'Stock_detail' item.id %}">
+                <strong>{{ item.Titulo }}</strong> - {{ item.Descripcion }}<br>
+                Cantidad: {{ item.Cantidad }}<br>
+                Fecha de creación: {{ item.Fecha_Creacion }}<br>
+                ¿Comprar?: {{ item.Comprar|yesno:"Sí,No" }}<br>
+                Creado por: {{ item.user.username }}
+
+            </a>
         </li>
         <hr>
     {% empty %}
