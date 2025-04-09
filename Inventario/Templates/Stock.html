@@ -2,8 +2,21 @@
 
 {% block content %}
 
-<h1>
-    Stock
-</h1>
+<h1>Stock1</h1>
+
+<ul>
+    {% for item in stoc %}
+        <li>
+            <strong>{{ item.Titulo }}</strong> - {{ item.Descripcion }}<br>
+            Cantidad: {{ item.Cantidad }}<br>
+            Fecha de creación: {{ item.Fecha_Creacion }}<br>
+            ¿Comprar?: {{ item.Comprar|yesno:"Sí,No" }}<br>
+            Creado por: {{ item.user.username }}
+        </li>
+        <hr>
+    {% empty %}
+        <li>No hay productos en stock.</li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

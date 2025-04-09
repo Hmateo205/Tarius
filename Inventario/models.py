@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Stock(models.Model):
+class Stock_1(models.Model):
     Titulo = models.CharField(max_length=100)
     Descripcion =models.TextField(blank=True)
     Cantidad = models.IntegerField(max_length=100)

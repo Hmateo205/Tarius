@@ -5,6 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.db  import IntegrityError
 from django.http import HttpResponse
 from Inventario.forms import StockForm
+from Inventario.models import Stock_1
+
 
 # Create your views here.
 
@@ -43,7 +45,13 @@ def SingUp (request):
                 })
     
 def Stock(request):
-    return render (request, 'Stock.html')
+    
+    Stock = Stock_1.objects.filter(user = request.user)
+    return render (request, 'Stock.html',{'stoc': Stock})
+
+
+
+
 
 def Crear(request):
     
