@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -49,8 +49,18 @@ def Stock(request):
     Stock = Stock_1.objects.filter(user = request.user)
     return render (request, 'Stock.html',{'stoc': Stock})
 
-
-
+def Stock_detail(request, Stock_id):
+    
+    if request.method == 'GET':
+        Stock = get_object_or_404(Stock_1, pk=Stock_id, user = request.user)
+        form = StockForm(instance=Stock)
+        return render(request, 'Stock_detail.html', {'stoc': Stock, 'form' : form})
+    
+    else:
+        Stock = get_object_or_404(Stock_1, pk=Stock_id, user = request.user)
+        form = StockForm(request.POST, instance= Stock)
+        form.save()
+        return redirect('Stock')
 
 
 def Crear(request):
@@ -76,9 +86,7 @@ def Crear(request):
     
     
 
-def Stock_detail(request, Stock_id):
-    Stock = get_list_or_404(Stock_1, pk=Stock_id)
-    return render(request, 'Stock_detail.html', {'stoc': Stock})
+
 
 
 def LogOut(request):
