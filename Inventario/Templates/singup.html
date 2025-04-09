@@ -2,3 +2,10 @@
     SingUp
 </h1>
 
+<form action="/SingUp/", method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        SingUP
+    </button>
+</form>

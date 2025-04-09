@@ -20,7 +20,7 @@ from Inventario import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path ('', views.Home, name='home'),
-    path('SingUp/',views.SingUp, name = 'singup'),
+    path ('', views.Home, name='Home'),
+    path('SingUp/',views.SingUp, name = 'SingUp'),
 
 ]
