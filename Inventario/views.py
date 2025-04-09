@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db  import IntegrityError
 from django.http import HttpResponse
+from Inventario.forms import StokcForm
 
 # Create your views here.
 
@@ -44,6 +45,24 @@ def SingUp (request):
 def Stock(request):
     return render (request, 'Stock.html')
 
+def Crear(request):
+    
+    if request.method == 'GET':
+        return render(request, 'Crear.html',{
+        'form' : StokcForm
+        })
+    
+    else:
+        print(request.POST)
+        return render(request, 'Crear.html',{
+        'form' : StokcForm
+        })
+    
+    
+
+
+
+
 def LogOut(request):
     logout(request)
     return redirect('Home')
@@ -70,6 +89,7 @@ def LogIn(request):
             login(request, user)
             return redirect('Stock')
             
+
 
         
     
