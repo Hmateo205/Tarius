@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -76,7 +76,9 @@ def Crear(request):
     
     
 
-
+def Stock_detail(request, Stock_id):
+    Stock = get_list_or_404(Stock_1, pk=Stock_id)
+    return render(request, 'Stock_detail.html', {'stoc': Stock})
 
 
 def LogOut(request):

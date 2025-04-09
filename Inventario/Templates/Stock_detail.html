@@ -1,0 +1,18 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+
+<h1>
+    {% for item in stoc %}
+        <li>
+            <strong>{{ item.Titulo }}</strong> - {{ item.Descripcion }}<br>
+            Cantidad: {{ item.Cantidad }}<br>
+        
+        </li>
+        <hr>
+    {% empty %}
+    <li>No hay productos en stock.</li>
+    {% endfor %}
+</h1>
+
+{% endblock %}

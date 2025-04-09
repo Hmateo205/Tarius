@@ -26,6 +26,8 @@ urlpatterns = [
     path('LogOut/',views.LogOut, name= 'LogOut'),
     path('LogIn/',views.LogIn, name= 'LogIn'),
     path('Stock/Crear/',views.Crear, name= 'Crear'),
+    path('Stock/<int:Stock_id>/',views.Stock_detail, name= 'Stock_detail'),
+
 
 
 
