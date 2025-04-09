@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.db  import IntegrityError
 from django.http import HttpResponse
 
@@ -43,4 +43,8 @@ def SingUp (request):
     
 def Stock(reqest):
     return render (reqest, 'Stock.html')
+
+def LogOut(reqest):
+    logout(reqest)
+    return redirect('Home')
     
