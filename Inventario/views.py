@@ -25,7 +25,7 @@ def SingUp (request):
                 user = User.objects.create_user(username=request.POST['username'],
                                      password=request.POST['password1'])
                 user.save()
-                login(request. user)
+                login(request, user)
                 return redirect('Stock')
                 
             
