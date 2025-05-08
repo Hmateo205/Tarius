@@ -29,14 +29,16 @@ namespace Tarius.Controllers
             {
                 // Normaliza el nombre y la contraseña para evitar problemas de comparación
                 string nombreIngresado = admin.Nombre?.Trim();
+                string correoIngresado = admin.Correo?.Trim();
                 string contraseñaIngresada = admin.Contraseña?.Trim();
 
+
                 // Depuración: Muestra los datos ingresados
-                ViewBag.DebugInfo = $"Nombre ingresado: '{nombreIngresado}', Contraseña ingresada: '{contraseñaIngresada}'";
+                ViewBag.DebugInfo = $"Nombre ingresado: '{nombreIngresado}', Contraseña ingresada: '{contraseñaIngresada}', Correo Ingresado: '{correoIngresado}'";
 
                 // Consulta para verificar el nombre y la contraseña en la base de datos
                 var usuario = _context.Administradores
-                    .FirstOrDefault(a => a.Nombre == nombreIngresado && a.Contraseña == contraseñaIngresada);
+                    .FirstOrDefault(a => a.Nombre == nombreIngresado && a.Correo == correoIngresado && a.Contraseña == contraseñaIngresada);
 
                 // Verifica si el usuario fue encontrado
                 if (usuario != null)
@@ -46,7 +48,7 @@ namespace Tarius.Controllers
                 }
 
                 // Mensaje de error si el nombre o la contraseña son incorrectos
-                ViewBag.Message = "Nombre o contraseña incorrectos.";
+                ViewBag.Message = "Nombre correo o contraseña incorrectos.";
             }
             else
             {

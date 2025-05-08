@@ -9,7 +9,9 @@ namespace Tarius.Models
         [Required(ErrorMessage = "El nombre es obligatorio")]
         public string Nombre { get; set; }
 
-        public string? Correo { get; set; }
+        [Required(ErrorMessage = "El correo es obligatorio")]
+        [EmailAddress(ErrorMessage = "Correo no válido")]
+        public string Correo { get; set; }
 
         [Required(ErrorMessage = "La contraseña es obligatoria")]
         [MinLength(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres")]
