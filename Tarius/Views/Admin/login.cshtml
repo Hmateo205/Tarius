@@ -1,0 +1,37 @@
+@model Tarius.Models.Admin
+
+<div class="container">
+    <h2>Login de Administrador</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+
+    @if (ViewBag.DebugInfo != null)
+    {
+        <div class="alert alert-info">@ViewBag.DebugInfo</div>
+    }
+
+    <form asp-action="Login" method="post">
+        <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <input asp-for="Nombre" class="form-control" placeholder="Ingrese su nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Contraseña">Contraseña</label>
+            <input asp-for="Contraseña" type="password" class="form-control" placeholder="Ingrese su contraseña" />
+            <span asp-validation-for="Contraseña" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</div>
