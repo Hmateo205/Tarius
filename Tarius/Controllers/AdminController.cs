@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 using Tarius.Models;
 using Tarius.Data;
 using System.Linq;
@@ -22,48 +26,56 @@ namespace Tarius.Controllers
 
         // Procesa el formulario de login
         [HttpPost]
-        public IActionResult Login(Admin admin)
+        public async Task<IActionResult> Login(Admin admin)
         {
-            // Verifica si el modelo cumple con las validaciones
             if (ModelState.IsValid)
             {
-                // Normaliza el nombre y la contraseña para evitar problemas de comparación
                 string nombreIngresado = admin.Nombre?.Trim();
-                string correoIngresado = admin.Correo?.Trim();
                 string contraseñaIngresada = admin.Contraseña?.Trim();
+                string correoIngresado = admin.Correo?.Trim();
 
-
-                // Depuración: Muestra los datos ingresados
-                ViewBag.DebugInfo = $"Nombre ingresado: '{nombreIngresado}', Contraseña ingresada: '{contraseñaIngresada}', Correo Ingresado: '{correoIngresado}'";
-
-                // Consulta para verificar el nombre y la contraseña en la base de datos
                 var usuario = _context.Administradores
-                    .FirstOrDefault(a => a.Nombre == nombreIngresado && a.Correo == correoIngresado && a.Contraseña == contraseñaIngresada);
+                    .FirstOrDefault(a => a.Nombre == nombreIngresado && a.Contraseña == contraseñaIngresada && a.Correo == correoIngresado);
 
-                // Verifica si el usuario fue encontrado
                 if (usuario != null)
                 {
-                    ViewBag.Message = "Login exitoso";
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, usuario.Nombre),
+                        new Claim("Correo", usuario.Correo)
+                    };
+
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principal = new ClaimsPrincipal(identity);
+
+                    // Inicia sesión con el esquema correcto
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
                     return RedirectToAction("Dashboard");
                 }
 
-                // Mensaje de error si el nombre o la contraseña son incorrectos
-                ViewBag.Message = "Nombre correo o contraseña incorrectos.";
+                ViewBag.Message = "Nombre, correo o contraseña incorrectos.";
             }
             else
             {
-                // Muestra los errores de validación específicos
                 ViewBag.Message = "Error en el formulario. Por favor, verifique los campos.";
             }
 
-            // Retorna a la vista de login si el proceso falla
             return View(admin);
         }
 
-        // Muestra el dashboard si el login es exitoso
+        // Muestra el dashboard solo si el usuario está autenticado
+        [Authorize]
         public IActionResult Dashboard()
         {
             return View();
+        }
+
+        // Cerrar sesión
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
         }
     }
 }
