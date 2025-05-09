@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Tarius.Data;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 using Tarius.Models;
+using Tarius.Data;
 using System.Linq;
 
 namespace Tarius.Controllers
@@ -14,29 +18,26 @@ namespace Tarius.Controllers
             _context = context;
         }
 
-        // Vista principal del Dashboard
-        public IActionResult Index()
+        public IActionResult Menu()
         {
-            var admins = _context.Administradores.ToList();
-            return View(admins);
+            return View("~/Views/Admin/Dashboard/Menu.cshtml");
         }
 
         // Crear Administrador (GET)
         public IActionResult Create()
         {
-            return View();
+            return View("~/Views/Admin/Dashboard/Create.cshtml" );
         }
 
         // Crear Administrador (POST)
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(Admin admin)
         {
             if (ModelState.IsValid)
             {
                 _context.Administradores.Add(admin);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Menu");
             }
             return View(admin);
         }
@@ -46,26 +47,39 @@ namespace Tarius.Controllers
         {
             var admin = _context.Administradores.Find(id);
             if (admin == null)
+            {
                 return NotFound();
+            }
             return View(admin);
         }
 
         // Editar Administrador (POST)
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Edit(Admin admin)
         {
             if (ModelState.IsValid)
             {
                 _context.Administradores.Update(admin);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Menu");
             }
             return View(admin);
         }
 
-        // Eliminar Administrador
+        // Eliminar Administrador (GET)
         public IActionResult Delete(int id)
+        {
+            var admin = _context.Administradores.Find(id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+            return View(admin);
+        }
+
+        // Confirmar Eliminación (POST)
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
         {
             var admin = _context.Administradores.Find(id);
             if (admin != null)
@@ -73,7 +87,7 @@ namespace Tarius.Controllers
                 _context.Administradores.Remove(admin);
                 _context.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Menu");
         }
     }
 }

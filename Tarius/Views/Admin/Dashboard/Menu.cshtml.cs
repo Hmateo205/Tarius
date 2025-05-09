@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Tarius.Views.Admin
+namespace Tarius.Views.Admin.Dashboard
 {
-    public class CreateModel : PageModel
+    public class DashbordModel : PageModel
     {
         public void OnGet()
         {

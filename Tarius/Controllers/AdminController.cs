@@ -53,7 +53,7 @@ namespace Tarius.Controllers
                     // Inicia sesión con el esquema correcto
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                    return RedirectToAction("Dashboard");
+                    return RedirectToAction("Menu", "Dashboard");
                 }
 
                 ViewBag.Message = "Nombre, correo o contraseña incorrectos.";
@@ -70,7 +70,7 @@ namespace Tarius.Controllers
         [Authorize]
         public IActionResult Dashboard()
         {
-            return View();
+            return View("~/Views/Admin/Dashboard/Menu.cshtml");
         }
 
         // Cerrar sesión

@@ -1,0 +1,51 @@
+﻿@model Tarius.Models.Admin
+
+@{
+    ViewData["Title"] = "Crear Administrador";
+}
+
+<div class="container mt-4">
+    <h2>Crear Nuevo Administrador</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+
+    <form asp-action="Create" method="post">
+        <div class="form-group mb-3">
+            <label for="Nombre">Nombre</label>
+            <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Correo">Correo</label>
+            <input asp-for="Correo" class="form-control" placeholder="Ingrese el correo" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Contraseña">Contraseña</label>
+            <input asp-for="Contraseña" type="password" class="form-control" placeholder="Ingrese la contraseña" />
+            <span asp-validation-for="Contraseña" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Rol">Rol</label>
+            <select asp-for="Rol" class="form-control">
+                <option value="Administrador">Administrador</option>
+                <option value="SuperAdmin">SuperAdmin</option>
+                <option value="Usuario">Usuario</option>
+            </select>
+            <span asp-validation-for="Rol" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-action="Menu" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</div>
