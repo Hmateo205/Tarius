@@ -18,5 +18,8 @@ namespace Tarius.Models
         [RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).+$",
             ErrorMessage = "Debe tener al menos una mayúscula, un número y un carácter especial")]
         public string Contraseña { get; set; }
+
+        public string Rol { get; set; }
+
     }
 }

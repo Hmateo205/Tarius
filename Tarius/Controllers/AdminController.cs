@@ -28,7 +28,7 @@ namespace Tarius.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Admin admin)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 string nombreIngresado = admin.Nombre?.Trim();
                 string contraseñaIngresada = admin.Contraseña?.Trim();
@@ -42,7 +42,8 @@ namespace Tarius.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, usuario.Nombre),
-                        new Claim("Correo", usuario.Correo)
+                        new Claim("Correo", usuario.Correo),
+                        new Claim("Rol", usuario.Rol),
                     };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -51,7 +52,7 @@ namespace Tarius.Controllers
                     // Inicia sesión con el esquema correcto
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                    return RedirectToAction("Dashboard");
+                    return RedirectToAction("Menu", "Dashboard");
                 }
 
                 ViewBag.Message = "Nombre, correo o contraseña incorrectos.";
@@ -68,7 +69,7 @@ namespace Tarius.Controllers
         [Authorize]
         public IActionResult Dashboard()
         {
-            return View();
+            return View("~/Views/Admin/Dashboard/Menu.cshtml");
         }
 
         // Cerrar sesión
