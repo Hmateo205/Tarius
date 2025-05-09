@@ -7,6 +7,14 @@ body {
     background-color: variables.$background-color;
 }
 
+header {
+    background-color: variables.$secondary-color;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -20,32 +28,31 @@ nav ul {
             color: variables.$text-color;
         }
     }
+}
 
-    .hero {
-        background-color: variables.$primary-color;
-        color: variables.$secondary-color;
-        padding: 50px 20px;
-        text-align: center;
+.hero {
+    background-color: variables.$primary-color;
+    color: variables.$secondary-color;
+    padding: 50px 20px;
+    text-align: center;
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+    img {
+        max-width: 100%;
+        height: auto;
     }
+}
 
-    .features {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        background-color: variables.$secondary-color;
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: variables.$secondary-color;
+
+    .feature-item {
+        text-align: center;
+        width: 200px;
+        background-color: variables.$feature-bg-color;
         padding: 20px;
-
-        .feature-item {
-            text-align: center;
-            width: 200px;
-            background-color: variables.$feature-bg-color;
-            padding: 20px;
-            border-radius: 10px;
-        }
+        border-radius: 10px;
     }
 }

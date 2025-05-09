@@ -1,50 +1,50 @@
 body {
-  font-family: "Arial", sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
 }
 
-header {
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav ul li {
+  display: inline;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+nav ul .hero {
   background-color: #006666;
   color: #ffffff;
-  padding: 20px;
+  padding: 50px 20px;
   text-align: center;
 }
-
-.hero {
-  background-color: #006666;
-  color: #ffffff;
-  padding: 50px;
-  text-align: center;
+nav ul .hero img {
+  max-width: 100%;
+  height: auto;
 }
-.hero h2 {
-  font-size: 2.5rem;
-}
-.hero p {
-  font-size: 1.2rem;
-}
-
-.features {
+nav ul .features {
   display: flex;
   justify-content: center;
   gap: 20px;
   background-color: #ffffff;
   padding: 20px;
 }
-.features .feature-item {
-  background-color: #f4f4f4;
+nav ul .features .feature-item {
   text-align: center;
   width: 200px;
+  background-color: #f0f0f0;
   padding: 20px;
   border-radius: 10px;
 }
-.features .feature-item h3 {
-  color: #2d3436;
-  font-size: 1.5rem;
-}
-.features .feature-item p {
-  font-size: 1rem;
+
+header {
+  background-color: #ffffff;
+  padding: 10px 20px;
 }
 
 /*# sourceMappingURL=main.css.map */
