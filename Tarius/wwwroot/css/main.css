@@ -3,6 +3,10 @@ header {
   padding: 10px 20px;
 }
 
+.navbar {
+  height: 70px;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
