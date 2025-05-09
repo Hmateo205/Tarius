@@ -1,3 +1,50 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
 
+header {
+  background-color: #006666;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero {
+  background-color: #006666;
+  color: #ffffff;
+  padding: 50px;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 2.5rem;
+}
+.hero p {
+  font-size: 1.2rem;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.features .feature-item {
+  background-color: #f4f4f4;
+  text-align: center;
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.features .feature-item h3 {
+  color: #2d3436;
+  font-size: 1.5rem;
+}
+.features .feature-item p {
+  font-size: 1rem;
+}
 
 /*# sourceMappingURL=main.css.map */

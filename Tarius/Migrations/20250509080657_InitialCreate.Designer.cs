@@ -11,7 +11,7 @@ using Tarius.Data;
 namespace Tarius.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250508171307_InitialCreate")]
+    [Migration("20250509080657_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -41,6 +41,10 @@ namespace Tarius.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
