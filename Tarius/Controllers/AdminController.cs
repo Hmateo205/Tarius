@@ -28,11 +28,12 @@ namespace Tarius.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Admin admin)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 string nombreIngresado = admin.Nombre?.Trim();
                 string contraseñaIngresada = admin.Contraseña?.Trim();
-                string correoIngresado = admin.Correo?.Trim();
+                string correoIngresado = admin.Correo?.Trim(); 
+
 
                 var usuario = _context.Administradores
                     .FirstOrDefault(a => a.Nombre == nombreIngresado && a.Contraseña == contraseñaIngresada && a.Correo == correoIngresado);
@@ -42,7 +43,8 @@ namespace Tarius.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, usuario.Nombre),
-                        new Claim("Correo", usuario.Correo)
+                        new Claim("Correo", usuario.Correo),
+                        new Claim("Rol", usuario.Rol),
                     };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

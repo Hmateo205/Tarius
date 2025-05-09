@@ -11,7 +11,7 @@ using Tarius.Data;
 namespace Tarius.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250509043437_InitialCreate")]
+    [Migration("20250509062918_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
