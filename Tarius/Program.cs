@@ -24,6 +24,8 @@ var app = builder.Build();
 app.UseRouting();
 app.UseAuthentication(); // Asegúrate de habilitar la autenticación antes de la autorización
 app.UseAuthorization();
+app.UseStaticFiles();
+
 
 app.UseEndpoints(endpoints =>
 {
