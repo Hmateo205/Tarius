@@ -13,8 +13,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/Admin/Login";
-        options.LogoutPath = "/Admin/Logout";
+        options.LogoutPath = "/Admin/AccesDenied";
         options.Cookie.Name = "TariusAuthCookie";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);  // Tiempo de expiración
     });
 
 builder.Services.AddControllersWithViews();
@@ -27,11 +28,8 @@ app.UseAuthorization();
 app.UseStaticFiles();
 
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-});
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
