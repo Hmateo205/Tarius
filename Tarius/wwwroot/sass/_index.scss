@@ -7,49 +7,45 @@ body {
     background-color: variables.$background-color;
 }
 
-header {
-    background-color: variables.$primary-color;
-    color: variables.$secondary-color;
-    padding: 20px;
-    text-align: center;
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+    li {
+        display: inline;
+
+        a {
+            text-decoration: none;
+            color: variables.$text-color;
+        }
+    }
 }
 
 .hero {
     background-color: variables.$primary-color;
     color: variables.$secondary-color;
-    padding: 50px;
+    padding: 50px 20px;
     text-align: center;
 
-    h2 {
-        font-size: 2.5rem;
-    }
-
-    p {
-        font-size: 1.2rem;
+    img {
+        max-width: 100%;
+        height: auto;
     }
 }
 
 .features {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    background-color: variables.$secondary-color;
+    justify-content: space-around;
     padding: 20px;
+    background-color: variables.$secondary-color;
 
     .feature-item {
-        background-color: variables.$background-color;
         text-align: center;
         width: 200px;
+        background-color: variables.$feature-bg-color;
         padding: 20px;
         border-radius: 10px;
-
-        h3 {
-            color: variables.$dark-color;
-            font-size: variables.$header-font-size;
-        }
-
-        p {
-            font-size: variables.$subheader-font-size;
-        }
     }
 }

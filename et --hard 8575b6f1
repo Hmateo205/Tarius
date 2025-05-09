@@ -1,0 +1,10 @@
+[33m4e31688[m[33m ([m[1;36mHEAD[m[33m)[m Micro Actualizaciones
+[33m8575b6f[m[33m ([m[1;32mmaster[m[33m)[m 1
+[33m710d502[m Update
+[33m9722fd9[m Diseño de la pagina home y login + Responsibe
+[33m7049443[m Auntentificacion mediante cookies para el login del usuario.
+[33me88cea2[m Login de Admin, Este login comprueba el nombre, correo y contraseña, haciendo que estas sean hobligatorias
+[33m9c9dfe4[m Login de Admin, Este login conprueba el nombre y la contraseña, haciendo que estas sean obligatorias
+[33m507842e[m Creación de archivos modelo MVC
+[33m19bd4ac[m Add project files.
+[33mc371436[m Add .gitattributes, .gitignore, and README.md.
