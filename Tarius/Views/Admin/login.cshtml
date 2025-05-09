@@ -8,31 +8,29 @@
         <div class="alert alert-danger">@ViewBag.Message</div>
     }
 
+    <form asp-action="Login" asp-controller="Admin" method="post">
+        <div class="form-group mb-3">
+            <label for="Nombre">Nombre</label>
+            <input asp-for="Nombre" class="form-control" placeholder="Ingrese su Usuario" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
 
+        <div class="form-group mb-3">
+            <label for="Correo">Correo</label>
+            <input asp-for="Correo" class="form-control" placeholder="Ingrese su correo" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label>Nombre</label>
-        <input asp-for="Nombre" class="form-control" placeholder="Ingrese su Usuario" />
-        <span asp-validation-for="Nombre" class="text-danger"></span>
-    </div>
+        <div class="form-group mb-3">
+            <label for="Contraseña">Contraseña</label>
+            <input asp-for="Contraseña" type="password" class="form-control" placeholder="Ingrese su contraseña" />
+            <span asp-validation-for="Contraseña" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label">Correo</label>
-        <input asp-for="Correo" class="form-control" placeholder="Ingrese su correo" />
-        <span asp-validation-for="Correo" class="text-danger"></span>
-    </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
 
-    <div class="form-group">
-        <label>Contraseña</label>
-        <input asp-for="Contraseña" type="password" class="form-control" placeholder="Ingrese su contraseña" />
-        <span asp-validation-for="Contraseña" class="text-danger"></span>
-    </div>
-
-
-    <button type="submit" class="btn btn-primary">Ingresar</button>
-
-     @section Scripts {
+    @section Scripts {
         <partial name="_ValidationScriptsPartial" />
-        }
-    
+    }
 </div>

@@ -43,7 +43,7 @@ namespace Tarius.Controllers
                     {
                         new Claim(ClaimTypes.Name, usuario.Nombre),
                         new Claim("Correo", usuario.Correo),
-                        new Claim("Rol", usuario.Rol),
+                        new Claim("Rol", usuario.Rol)
                     };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
