@@ -1,3 +1,8 @@
+header {
+  background-color: #ffffff;
+  padding: 10px 20px;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -17,34 +22,30 @@ nav ul li a {
   text-decoration: none;
   color: #333;
 }
-nav ul .hero {
+
+.hero {
   background-color: #006666;
   color: #ffffff;
   padding: 50px 20px;
   text-align: center;
 }
-nav ul .hero img {
+.hero img {
   max-width: 100%;
   height: auto;
 }
-nav ul .features {
+
+.features {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  background-color: #ffffff;
+  justify-content: space-around;
   padding: 20px;
+  background-color: #ffffff;
 }
-nav ul .features .feature-item {
+.features .feature-item {
   text-align: center;
   width: 200px;
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 10px;
-}
-
-header {
-  background-color: #ffffff;
-  padding: 10px 20px;
 }
 
 /*# sourceMappingURL=main.css.map */
