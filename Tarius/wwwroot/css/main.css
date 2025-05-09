@@ -1,10 +1,10 @@
 header {
   background-color: #ffffff;
-  padding: 10px 20px;
+  padding: 5px 20px;
 }
 
 .navbar {
-  height: 70px;
+  height: 55px;
 }
 
 body {
@@ -57,33 +57,33 @@ nav ul li a {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f9f9f9;
+  margin-top: -30px;
 }
 
 .login-card {
   background-color: #fff;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   text-align: center;
-  width: 320px;
+  width: 330px;
 }
 .login-card .login-logo {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 .login-card .login-logo img {
   width: 100px;
   height: auto;
 }
 .login-card h2 {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-size: 1.8rem;
   color: #006666;
 }
 .login-card .login-form .input-group {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   border-bottom: 1px solid #ddd;
 }
 .login-card .login-form .input-group .icon {
@@ -109,7 +109,7 @@ nav ul li a {
   border: 1px solid #006666;
   padding: 10px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   border-radius: 20px;
   font-size: 1rem;
   cursor: pointer;
@@ -119,7 +119,7 @@ nav ul li a {
   background-color: #008080;
 }
 .login-card .login-form .forgot-password {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .login-card .login-form .forgot-password a {
   color: #555;
