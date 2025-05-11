@@ -20,22 +20,22 @@ namespace Tarius.Controllers
 
         public IActionResult Menu()
         {
-            return View("~/Views/Admin/Dashboard/Menu.cshtml");
+            return View("~/Views/Usuarios/Dashboard/Menu.cshtml");
         }
 
         // Crear Administrador (GET)
         public IActionResult Create()
         {
-            return View("~/Views/Admin/Dashboard/Create.cshtml");
+            return View("~/Views/Usuarios/Dashboard/Create.cshtml");
         }
 
         // Crear Administrador (POST)
         [HttpPost]
-        public IActionResult Create(Admin admin)
+        public IActionResult Create(Usuarios admin)
         {
             if (ModelState.IsValid)
             {
-                _context.Administradores.Add(admin);
+                _context.Usuarios.Add(admin);
                 _context.SaveChanges();
                 return RedirectToAction("Menu");
             }
@@ -45,7 +45,7 @@ namespace Tarius.Controllers
         // Editar Administrador (GET)
         public IActionResult Edit(int id)
         {
-            var admin = _context.Administradores.Find(id);
+            var admin = _context.Usuarios.Find(id);
             if (admin == null)
             {
                 return NotFound();
@@ -55,11 +55,11 @@ namespace Tarius.Controllers
 
         // Editar Administrador (POST)
         [HttpPost]
-        public IActionResult Edit(Admin admin)
+        public IActionResult Edit(Usuarios admin)
         {
             if (ModelState.IsValid)
             {
-                _context.Administradores.Update(admin);
+                _context.Usuarios.Update(admin);
                 _context.SaveChanges();
                 return RedirectToAction("Menu");
             }
@@ -69,7 +69,7 @@ namespace Tarius.Controllers
         // Eliminar Administrador (GET)
         public IActionResult Delete(int id)
         {
-            var admin = _context.Administradores.Find(id);
+            var admin = _context.Usuarios.Find(id);
             if (admin == null)
             {
                 return NotFound();
@@ -81,10 +81,10 @@ namespace Tarius.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var admin = _context.Administradores.Find(id);
+            var admin = _context.Usuarios.Find(id);
             if (admin != null)
             {
-                _context.Administradores.Remove(admin);
+                _context.Usuarios.Remove(admin);
                 _context.SaveChanges();
             }
             return RedirectToAction("Menu");

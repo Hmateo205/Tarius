@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace Tarius.Controllers
 {
-    public class AdminController : Controller
+    public class UsuariosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public AdminController(ApplicationDbContext context)
+        public UsuariosController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -26,15 +26,15 @@ namespace Tarius.Controllers
 
         // Procesa el formulario de login
         [HttpPost]
-        public async Task<IActionResult> Login(Admin admin)
+        public async Task<IActionResult> Login(Usuarios Usuario)
         {
             if (!ModelState.IsValid)
             {
-                string nombreIngresado = admin.Nombre?.Trim();
-                string contraseñaIngresada = admin.Contraseña?.Trim();
-                string correoIngresado = admin.Correo?.Trim();
+                string?  nombreIngresado = Usuario.Nombre?.Trim();
+                string? contraseñaIngresada = Usuario.Contraseña?.Trim();
+                string? correoIngresado = Usuario.Correo?.Trim();
 
-                var usuario = _context.Administradores
+                var usuario = _context.Usuarios
                     .FirstOrDefault(a => a.Nombre == nombreIngresado && a.Contraseña == contraseñaIngresada && a.Correo == correoIngresado);
 
                 if (usuario != null)
@@ -62,14 +62,14 @@ namespace Tarius.Controllers
                 ViewBag.Message = "Error en el formulario. Por favor, verifique los campos.";
             }
 
-            return View(admin);
+            return View(Usuario);
         }
 
         // Muestra el dashboard solo si el usuario está autenticado
         [Authorize]
         public IActionResult Dashboard()
         {
-            return View("~/Views/Admin/Dashboard/Menu.cshtml");
+            return View("~/Views/Usuarios/Dashboard/Menu.cshtml");
         }
 
         // Cerrar sesión

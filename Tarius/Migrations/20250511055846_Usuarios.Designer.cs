@@ -11,8 +11,8 @@ using Tarius.Data;
 namespace Tarius.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250509080657_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250511055846_Usuarios")]
+    partial class Usuarios
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace Tarius.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Tarius.Models.Admin", b =>
+            modelBuilder.Entity("Tarius.Models.Usuarios", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace Tarius.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Administradores");
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

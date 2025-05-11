@@ -40,18 +40,18 @@
                         {
                             <!-- Botón Dashboard (solo cuando el usuario está autenticado) -->
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+                                <a class="nav-link" asp-controller="Usuarios" asp-action="Dashboard">Dashboard</a>
                             </li>
                             <!-- Botón Cerrar Sesión -->
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Logout">Cerrar Sesión</a>
+                                <a class="nav-link" asp-controller="Usuarios" asp-action="Logout">Cerrar Sesión</a>
                             </li>
                         }
                         else
                         {
                             <!-- Botón de Inicio de Sesión (si no está autenticado) -->
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Login">Inicio de Sesión</a>
+                                <a class="nav-link" asp-controller="Usuarios" asp-action="Login">Inicio de Sesión</a>
                             </li>
                         }
                     </ul>
