@@ -21,7 +21,7 @@ namespace Tarius.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Tarius.Models.Admin", b =>
+            modelBuilder.Entity("Tarius.Models.Usuarios", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace Tarius.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Administradores");
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }
