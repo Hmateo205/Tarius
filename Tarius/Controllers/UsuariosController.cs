@@ -17,66 +17,11 @@ namespace Tarius.Controllers
         {
             _context = context;
         }
-
-        // Muestra el formulario de login
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        // Procesa el formulario de login
-        [HttpPost]
-        public async Task<IActionResult> Login(Usuarios Usuario)
-        {
-            if (!ModelState.IsValid)
-            {
-                string?  nombreIngresado = Usuario.Nombre?.Trim();
-                string? contraseñaIngresada = Usuario.Contraseña?.Trim();
-                string? correoIngresado = Usuario.Correo?.Trim();
-
-                var usuario = _context.Usuarios
-                    .FirstOrDefault(a => a.Nombre == nombreIngresado && a.Contraseña == contraseñaIngresada && a.Correo == correoIngresado);
-
-                if (usuario != null)
-                {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, usuario.Nombre),
-                        new Claim("Correo", usuario.Correo),
-                        new Claim("Rol", usuario.Rol)
-                    };
-
-                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    var principal = new ClaimsPrincipal(identity);
-
-                    // Inicia sesión con el esquema correcto
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                    return RedirectToAction("Menu", "Dashboard");
-                }
-
-                ViewBag.Message = "Nombre, correo o contraseña incorrectos.";
-            }
-            else
-            {
-                ViewBag.Message = "Error en el formulario. Por favor, verifique los campos.";
-            }
-
-            return View(Usuario);
-        }
-
         // Muestra el dashboard solo si el usuario está autenticado
         [Authorize]
         public IActionResult Dashboard()
         {
             return View("~/Views/Usuarios/Dashboard/Menu.cshtml");
-        }
-
-        // Cerrar sesión
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
         }
 
     }

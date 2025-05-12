@@ -1,4 +1,4 @@
-@model Tarius.Models.Usuarios
+ï»¿@model Tarius.Models.Usuarios
 
 <div class="login-container">
     <div class="login-card">
@@ -7,8 +7,8 @@
             <img src="~/resources/images/Logo.jpg" alt="Logo" />
         </div>
 
-        <!-- Título -->
-        <h2>Iniciar Sesion</h2>
+        <!-- TÃ­tulo -->
+        <h2>Registrarse</h2>
 
 
         <!-- Verificacion de campos  -->
@@ -18,9 +18,18 @@
         }
 
         <!-- Formulario de Login -->
-        <form asp-action="Login" asp-controller="Login" method="post" class="login-form">
-        
-            
+        <form asp-action="Login" asp-controller="SingIn" method="post" class="login-form">
+
+            <!-- Campo de Usuario -->
+            <div class="input-group">
+                <span class="icon">
+                    <i class="fas fa-user"></i>
+                </span>
+                <input asp-for="Nombre" placeholder="Usuario" class="form-input" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+
             <!-- Campo de Correo -->
             <div class="input-group">
                 <span class="icon">
@@ -30,22 +39,18 @@
                 <span asp-validation-for="Correo" class="text-danger"></span>
             </div>
 
-            <!-- Campo de Contraseña -->
+            <!-- Campo de ContraseÃ±a -->
             <div class="input-group">
                 <span class="icon">
                     <i class="fas fa-lock"></i>
                 </span>
-                <input asp-for="Contraseña" type="password" placeholder="Contraseña" class="form-input" />
-                <span asp-validation-for="Contraseña" class="text-danger"></span>
+                <input asp-for="ContraseÃ±a" type="password" placeholder="ContraseÃ±a" class="form-input" />
+                <span asp-validation-for="ContraseÃ±a" class="text-danger"></span>
             </div>
 
-            <!-- Botón de Login -->
+            <!-- BotÃ³n de Login -->
             <button type="submit" class="btn-login">Iniciar Sesion</button>
-         
-            <!-- Enlace de Recuperación -->
-            <div class="forgot-password">
-                <a href="#">Olvidaste la Conrtaseña?</a>
-            </div>
+
         </form>
     </div>
 </div>

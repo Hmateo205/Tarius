@@ -12,8 +12,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Usuarios/Login";
-        options.LogoutPath = "/Usuarios/AccesDenied";
+        options.LoginPath = "/Login/Login";
+        options.LogoutPath = "/Login/Logout";
+        options.AccessDeniedPath = "/Login/AccessDenied";
         options.Cookie.Name = "TariusAuthCookie";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);  // Tiempo de expiración
     });

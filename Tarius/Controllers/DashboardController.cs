@@ -9,6 +9,8 @@ using System.Linq;
 
 namespace Tarius.Controllers
 {
+    // Muestra el dashboard solo si el usuario está autenticado
+    [Authorize]
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -31,7 +33,7 @@ namespace Tarius.Controllers
 
         // Crear Administrador (POST)
         [HttpPost]
-        public IActionResult Create(Usuarios admin)
+        public IActionResult Create(Tarius.Models.Usuarios admin)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +57,7 @@ namespace Tarius.Controllers
 
         // Editar Administrador (POST)
         [HttpPost]
-        public IActionResult Edit(Usuarios admin)
+        public IActionResult Edit(Tarius.Models.Usuarios admin)
         {
             if (ModelState.IsValid)
             {

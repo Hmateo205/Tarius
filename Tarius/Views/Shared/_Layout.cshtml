@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewData["Title"] - Tarius</title>
+        <title>@ViewData["Title"] Tarius</title>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
     </head>
@@ -42,18 +42,18 @@
                                 </li>
                                 <!-- Boton Cerrar Sesion -->
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Usuarios/Login" asp-action="Logout">Cerrar Sesión</a>
+                                    <a class="nav-link" asp-controller="Login" asp-action="Logout">Cerrar Sesión</a>
                                 </li>
                             }
                             else
                             {
                                 <!-- Boton de Inicio de Sesion (si no esta autenticado) -->
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Usuarios/Login" asp-action="Login">Inicio de Sesión</a>
+                                    <a class="nav-link" asp-controller="Login" asp-action="Login">Inicio de Sesión</a>
                                 </li>
                                 <!-- Boton de Registrarce (si no esta autenticado) -->
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Usuarios" asp-action="SingIn">Registrarce</a>
+                                    <a class="nav-link" asp-controller="SingIn" asp-action="SingIn">Registrarce</a>
                                 </li>
                             }
                         </ul>
