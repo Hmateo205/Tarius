@@ -39,7 +39,7 @@ namespace Tarius.Controllers.Usuarios
                     {
                         new Claim(ClaimTypes.Name, usuario.Correo),  // Usar ClaimTypes.Name para identificar al usuario
                         new Claim(ClaimTypes.Email, usuario.Correo),
-                        new Claim("Rol", usuario.Rol)
+                        new Claim(ClaimTypes.Role, usuario.Rol),
                     };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -48,7 +48,20 @@ namespace Tarius.Controllers.Usuarios
                     // Inicia sesión con el esquema correcto
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                    return RedirectToAction("Menu", "Dashboard");
+                    // Redirecciona según el rol del usuario
+                    switch (usuario.Rol)
+                    {
+                        case "Administrador":
+                            return RedirectToAction("Menu", "DashboardAdmin"); 
+                        case "Colaborador":
+                            return RedirectToAction("Menu", "DashboardColaborador");
+                        case "Cliente":
+                            return RedirectToAction("Menu", "DashboardCliente");
+                        default:
+                            return RedirectToAction("Index", "Home"); // Fallback
+                    }
+
+
                 }
 
                 ViewBag.Message = "Norreo o contraseña incorrectos.";

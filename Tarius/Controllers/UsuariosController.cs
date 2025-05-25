@@ -18,11 +18,11 @@ namespace Tarius.Controllers
             _context = context;
         }
         // Muestra el dashboard solo si el usuario está autenticado
-        [Authorize]
-        public IActionResult Dashboard()
-        {
-            return View("~/Views/Usuarios/Dashboard/Menu.cshtml");
-        }
+        //[Authorize]
+        //public IActionResult Dashboard()
+        //{
+        //    return View("~/Views/Usuarios/Dashboard/Menu.cshtml");
+        //}
 
     }
 }
