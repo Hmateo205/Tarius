@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tarius.Models;
+using Tarius.Models.Colaborador;
 
 namespace Tarius.Data
 {
@@ -8,6 +9,12 @@ namespace Tarius.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Receta> Recetas { get; set; }
+        public DbSet<Ingrediente> Ingredientes { get; set; }
+        public DbSet<PasoReceta> PasoRecetas { get; set; }
+        public DbSet<Plan> Planes { get; set; }
+        public DbSet<RecetaPlan> RecetasPlan { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

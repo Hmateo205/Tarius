@@ -1,4 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Dashboard Colaborador";
+    ViewData["Title"] = "Panel de Colaborador";
 }
-<h2>Colaborador @ViewBag.Nombre</h2>
+
+<h2>Panel del Colaborador</h2>
+
+<div class="d-flex gap-3">
+    <a class="btn btn-primary btn-lg" asp-action="ListaRecetas">Recetas</a>
+    <a class="btn btn-secondary btn-lg" asp-action="Planes">Planes</a>
+</div>

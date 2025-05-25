@@ -1,0 +1,31 @@
+﻿@model List<Tarius.Models.Colaborador.Receta>
+
+@{
+    ViewData["Title"] = "Mis Recetas";
+}
+
+<h2>Listado de Recetas</h2>
+
+<a asp-action="Create" class="btn btn-success mb-3">+ Nueva Receta</a>
+
+<div class="row">
+    @foreach (var receta in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@receta.Nombre</h5>
+                    <p class="card-text">@receta.Descripcion</p>
+                    <p><strong>Tipo:</strong> @receta.Tipo</p>
+                    <p><strong>Tiempo:</strong> @receta.TiempoPreparacion min</p>
+
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@receta.Id">Ver</a>
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@receta.Id">Editar</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@receta.Id">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,12 +1,14 @@
 using Tarius.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuración de la base de datos
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Configuración de la autenticación basada en cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
