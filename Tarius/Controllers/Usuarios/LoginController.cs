@@ -60,8 +60,6 @@ namespace Tarius.Controllers.Usuarios
                         default:
                             return RedirectToAction("Index", "Home"); // Fallback
                     }
-
-
                 }
 
                 ViewBag.Message = "Norreo o contraseña incorrectos.";
