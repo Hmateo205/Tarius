@@ -15,7 +15,8 @@
 <ul>
     @foreach (var ingrediente in Model.Ingredientes)
     {
-        <li>@ingrediente.Nombre - @ingrediente.Cantidad</li>
+        var unidad = string.IsNullOrWhiteSpace(ingrediente.Unidad) ? "" : $" {ingrediente.Unidad}";
+        <li>@ingrediente.Nombre - @ingrediente.Cantidad@unidad</li>
     }
 </ul>
 
