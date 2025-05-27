@@ -31,7 +31,7 @@ namespace Tarius.Controllers.Usuarios.Administrador
         [HttpPost]
         public IActionResult Create(Tarius.Models.Usuarios usuario)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Usuarios.Add(usuario);
                 _context.SaveChanges();
@@ -51,7 +51,7 @@ namespace Tarius.Controllers.Usuarios.Administrador
         [HttpPost]
         public IActionResult Edit(Tarius.Models.Usuarios usuario)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Usuarios.Update(usuario);
                 _context.SaveChanges();
