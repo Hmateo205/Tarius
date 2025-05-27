@@ -25,7 +25,6 @@
         <select asp-for="TiempoPreparacion" class="form-control">
             @for (int i = 5; i <= 180; i += 5)
             {
-                var selected = Model.TiempoPreparacion == i ? "selected" : "";
                 <option value="@i" selected="@(Model.TiempoPreparacion == i)">
                     @i minutos
                 </option>
