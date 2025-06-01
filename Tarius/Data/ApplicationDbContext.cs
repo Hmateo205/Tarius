@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tarius.Models;
+using Tarius.Models.Cliente;
 using Tarius.Models.Colaborador;
 
 namespace Tarius.Data
@@ -14,6 +15,8 @@ namespace Tarius.Data
         public DbSet<PasoReceta> PasoRecetas { get; set; }
         public DbSet<Plan> Planes { get; set; }
         public DbSet<RecetaPlan> RecetasPlan { get; set; }
+        public DbSet<IngredienteCliente> IngredienteCliente { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
