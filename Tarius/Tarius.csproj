@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Usuarios\Cliente\ListaCompras\" />
-    <Folder Include="Views\Usuarios\Cliente\Recetas\" />
     <Folder Include="Views\Usuarios\Cliente\Planes\" />
   </ItemGroup>
 

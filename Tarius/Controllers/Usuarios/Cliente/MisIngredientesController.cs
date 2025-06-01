@@ -45,6 +45,101 @@ namespace Tarius.Controllers.Usuarios.Cliente
             return View("~/Views/Usuarios/Cliente/MisIngredientes/Ingredientes.cshtml", ingredientes);
         }
 
+        //Get del Crear
+        [HttpGet]
+        public IActionResult Crear()
+        {
+            return View("~/Views/Usuarios/Cliente/MisIngredientes/Crear.cshtml");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Crear(IngredienteCliente ingrediente)
+        {
+            var correoUsuario = User.Identity?.Name;
+            if (string.IsNullOrEmpty(correoUsuario))
+                return RedirectToAction("Login", "Login");
+
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Correo == correoUsuario);
+            if (usuario == null)
+                return RedirectToAction("Login", "Login");
+
+            if (!ModelState.IsValid)
+            {
+                ingrediente.UsuarioId = usuario.Id;
+                _context.Add(ingrediente);
+                await _context.SaveChangesAsync();
+
+                // Redirige a la acción que carga la vista con la lista de ingredientes
+                return RedirectToAction("Ingredientes", "MisIngredientes");
+            }
+
+            return View("~/Views/Usuarios/Cliente/MisIngredientes/Crear.cshtml", ingrediente);
+        }
+
+
+        // Get del Editar
+        [HttpGet]
+        public async Task<IActionResult> Editar(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var ingrediente = await _context.IngredienteCliente.FindAsync(id);
+            if (ingrediente == null) return NotFound();
+
+            return View("~/Views/Usuarios/Cliente/MisIngredientes/Editar.cshtml", ingrediente);
+        }
+
+
+        //Post Editar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Editar(int id, string Cantidad)
+        {
+            var ingrediente = await _context.IngredienteCliente.FindAsync(id);
+            if (ingrediente == null) return NotFound();
+
+            if (string.IsNullOrWhiteSpace(Cantidad))
+            {
+                ViewBag.Mensaje = "La cantidad no puede estar vacía.";
+                return View("~/Views/Usuarios/Cliente/MisIngredientes/Editar.cshtml", ingrediente);
+            }
+
+            ingrediente.Cantidad = Cantidad;
+
+            _context.Update(ingrediente);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Ingredientes", "MisIngredientes");
+        }
+
+        //get eliminar
+        [HttpGet]
+        public async Task<IActionResult> Eliminar(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var ingrediente = await _context.IngredienteCliente.FindAsync(id);
+            if (ingrediente == null) return NotFound();
+
+            return View("~/Views/Usuarios/Cliente/MisIngredientes/Eliminar.cshtml", ingrediente);
+        }
+
+
+        //Post eliminar
+        [HttpPost, ActionName("Eliminar")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminarConfirmado(int id)
+        {
+            var ingrediente = await _context.IngredienteCliente.FindAsync(id);
+            if (ingrediente == null) return NotFound();
+
+            _context.IngredienteCliente.Remove(ingrediente);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Ingredientes", "MisIngredientes");
+        }
+
 
 
 
