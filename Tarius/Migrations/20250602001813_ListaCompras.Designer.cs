@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tarius.Data;
 
@@ -10,9 +11,11 @@ using Tarius.Data;
 namespace Tarius.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250602001813_ListaCompras")]
+    partial class ListaCompras
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,35 +52,6 @@ namespace Tarius.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("IngredienteCliente");
-                });
-
-            modelBuilder.Entity("Tarius.Models.Cliente.ListaComprasCliente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<double>("Cantidad")
-                        .HasColumnType("float");
-
-                    b.Property<string>("NombreIngrediente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Unidad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("ListaComprasCliente");
                 });
 
             modelBuilder.Entity("Tarius.Models.Colaborador.Ingrediente", b =>
@@ -232,17 +206,6 @@ namespace Tarius.Migrations
                 });
 
             modelBuilder.Entity("Tarius.Models.Cliente.IngredienteCliente", b =>
-                {
-                    b.HasOne("Tarius.Models.Usuarios", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("Tarius.Models.Cliente.ListaComprasCliente", b =>
                 {
                     b.HasOne("Tarius.Models.Usuarios", "Usuario")
                         .WithMany()

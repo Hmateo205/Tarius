@@ -18,7 +18,7 @@ namespace Tarius.Controllers.Usuarios.Cliente
 
         public IActionResult ListaCompras()
         {
-            return RedirectToAction("VerListaCompras", "ListaCompras", new { area = "" });
+            return RedirectToAction("ListaCompras", "RecetasCliente");
         }
 
         [HttpPost]

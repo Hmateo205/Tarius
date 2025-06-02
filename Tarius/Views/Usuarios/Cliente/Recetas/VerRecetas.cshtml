@@ -25,6 +25,12 @@
                 <td>@receta.TiempoPreparacion</td>
                 <td>@receta.Calorias</td>
                 <td>@receta.Tipo</td>
+                <td>
+                    <form asp-action="SeleccionarPorciones" asp-controller="RecetasCliente" method="get">
+                        <input type="hidden" name="recetaId" value="@receta.Id" />
+                        <button type="submit" class="btn btn-primary btn-sm">Añadir a compras</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

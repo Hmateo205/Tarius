@@ -16,6 +16,8 @@ namespace Tarius.Data
         public DbSet<Plan> Planes { get; set; }
         public DbSet<RecetaPlan> RecetasPlan { get; set; }
         public DbSet<IngredienteCliente> IngredienteCliente { get; set; }
+        public DbSet<ListaComprasCliente> ListaComprasCliente { get; set; }
+
 
 
 
