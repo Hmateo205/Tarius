@@ -29,10 +29,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);  // Tiempo de expiración
     });
 
-
-
-
-
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -43,8 +39,6 @@ app.UseAuthorization();
 app.UseStaticFiles();
 app.UseDeveloperExceptionPage();
 
-//Deployar
-app.UseHttpsRedirection();
 
 
 app.MapControllerRoute(
