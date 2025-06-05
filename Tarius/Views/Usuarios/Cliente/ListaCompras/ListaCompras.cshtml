@@ -10,6 +10,11 @@
 {
     <div class="alert alert-info">No tienes ingredientes pendientes en tu lista de compras.</div>
 }
+
+
+
+
+
 else
 {
     <table class="table table-bordered table-striped">
@@ -32,3 +37,18 @@ else
         </tbody>
     </table>
 }
+
+
+@if (Model.Any())
+{
+    <div class="mb-3">
+        <form asp-action="EliminarLista" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Vaciar Lista</button>
+        </form>
+
+        <form asp-action="AgregarAlInventario" method="post" style="display:inline; margin-left: 10px;">
+            <button type="submit" class="btn btn-success">Añadir al Inventario</button>
+        </form>
+    </div>
+}
+
